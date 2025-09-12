@@ -102,3 +102,70 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #f9f9f9;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input, form textarea, form select, form button {
+    margin-top: 5px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+form button {
+    background-color: #0077cc;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+form button:hover {
+    background-color: #ff6600;
+}
+
+/* Радиокнопки и чекбоксы */
+form input[type="radio"], 
+form input[type="checkbox"] {
+    margin-right: 8px;
+    width: auto;
+}
+
+/* Форма авторизации */
+.auth-body {
+    margin: 0;
+    height: 100vh;
+    background: url("https://picsum.photos/1920/1080?blur=3") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-form {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    width: 300px;
+    text-align: center;
+}
+
+.auth-form h2 {
+    margin-bottom: 15px;
+}
