@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты — Бизнес-ланчи</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+    <header>
+        <h1>Контакты</h1>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="menu.html">Меню</a>
+            <a href="contacts.html" class="active">Контакты</a>
+            <a href="auth.html">Войти</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contacts">
+            <h2>Наши контакты</h2>
+            <p>Вы можете связаться с нами любым удобным способом:</p>
+            <p>📞 Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+            <p>📧 Email: <a href="mailto:info@businesslunch.ru">info@businesslunch.ru</a></p>
+            <p>📍 Адрес: Москва, ул. Примерная, 10</p>
+        </section>
+
+        <section id="feedback">
+            <h2>Обратная связь</h2>
+            <form action="https://httpbin.org/post" method="POST" enctype="multipart/form-data">
+                <label for="fio">ФИО:</label>
+                <input type="text" id="fio" name="fio" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <fieldset>
+                    <legend>Откуда узнали о нас?</legend>
+                    <label><input type="radio" name="source" value="internet" required> Интернет</label>
+                    <label><input type="radio" name="source" value="friends"> Друзья</label>
+                    <label><input type="radio" name="source" value="ads"> Реклама</label>
+                </fieldset>
+
+                <label for="type">Тип обращения:</label>
+                <select id="type" name="type">
+                    <option value="complaint">Жалоба</option>
+                    <option value="suggestion">Предложение</option>
+                </select>
+
+                <label for="message">Текст сообщения:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <label for="file">Вложения:</label>
+                <input type="file" id="file" name="file">
+
+                <label>
+                    <input type="checkbox" name="consent" required>
+                    Даю согласие на обработку персональных данных
+                </label>
+
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Контакты: <a href="tel:+74951234567">+7 (495) 123-45-67</a> | 
+        <a href="mailto:info@businesslunch.ru">info@businesslunch.ru</a></p>
+        <p>Адрес: Москва, ул. Примерная, 10</p>
+    </footer>
+</body>
+</html>

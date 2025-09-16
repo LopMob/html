@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Собрать ланч</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lunch.css">
+  <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+<header>
+  <h1>Собрать ланч</h1>
+  <nav>
+    <a href="index.html">Главная</a>
+    <a href="menu.html">Меню</a>
+    <a href="lunch.html" class="active">Собрать ланч</a>
+    <a href="contacts.html">Контакты</a>
+    <a href="auth.html">Войти</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Супы -->
+  <section>
+    <h2>Супы</h2>
+    <div class="dishes">
+      <div class="dish">
+        <img src="img/soup1.jpg" alt="Борщ">
+        <p class="name">Борщ</p>
+        <p class="weight">250 мл</p>
+        <p class="price">200 ₽</p>
+        <button>Добавить</button>
+      </div>
+      <div class="dish">
+        <img src="img/soup2.jpg" alt="Суп-пюре из грибов">
+        <p class="name">Суп-пюре из грибов</p>
+        <p class="weight">250 мл</p>
+        <p class="price">220 ₽</p>
+        <button>Добавить</button>
+      </div>
+      <div class="dish">
+        <img src="img/soup3.jpg" alt="Щи">
+        <p class="name">Щи</p>
+        <p class="weight">250 мл</p>
+        <p class="price">180 ₽</p>
+        <button>Добавить</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Главные блюда -->
+  <section>
+    <h2>Главные блюда</h2>
+    <div class="dishes">
+      <div class="dish">
+        <img src="img/main1.jpg" alt="Котлета с пюре">
+        <p class="name">Котлета с пюре</p>
+        <p class="weight">300 г</p>
+        <p class="price">350 ₽</p>
+        <button>Добавить</button>
+      </div>
+      <div class="dish">
+        <img src="img/main2.jpg" alt="Паста Болоньезе">
+        <p class="name">Паста Болоньезе</p>
+        <p class="weight">350 г</p>
+        <p class="price">400 ₽</p>
+        <button>Добавить</button>
+      </div>
+      <div class="dish">
+        <img src="img/main3.jpg" alt="Рыба с овощами">
+        <p class="name">Рыба с овощами</p>
+        <p class="weight">320 г</p>
+        <p class="price">420 ₽</p>
+        <button>Добавить</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Напитки -->
+  <section>
+    <h2>Напитки</h2>
+    <div class="dishes">
+      <div class="dish">
+        <img src="img/drink1.jpg" alt="Компот">
+        <p class="name">Компот</p>
+        <p class="weight">200 мл</p>
+        <p class="price">100 ₽</p>
+        <button>Добавить</button>
+      </div>
+      <div class="dish">
+        <img src="img/drink2.jpg" alt="Чай">
+        <p class="name">Чай</p>
+        <p class="weight">200 мл</p>
+        <p class="price">90 ₽</p>
+        <button>Добавить</button>
+      </div>
+      <div class="dish">
+        <img src="img/drink3.jpg" alt="Сок">
+        <p class="name">Сок</p>
+        <p class="weight">200 мл</p>
+        <p class="price">120 ₽</p>
+        <button>Добавить</button>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Ваш заказ</h2>
+    <div id="order">
+        <p>Ничего не выбрано</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Контакты: <a href="tel:+74951234567">+7 (495) 123-45-67</a> | 
+  <a href="mailto:info@businesslunch.ru">info@businesslunch.ru</a></p>
+  <p>Адрес: Москва, ул. Примерная, 10</p>
+</footer>
+</body>
+</html>
