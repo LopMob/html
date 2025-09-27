@@ -25,95 +25,51 @@
 
 <main>
   <!-- Супы -->
-  <section>
+  <section id="soups">
     <h2>Супы</h2>
-    <div class="dishes">
-      <div class="dish">
-        <img src="img/soup1.jpg" alt="Борщ">
-        <p class="name">Борщ</p>
-        <p class="weight">250 мл</p>
-        <p class="price">200 ₽</p>
-        <button>Добавить</button>
-      </div>
-      <div class="dish">
-        <img src="img/soup2.jpg" alt="Суп-пюре из грибов">
-        <p class="name">Суп-пюре из грибов</p>
-        <p class="weight">250 мл</p>
-        <p class="price">220 ₽</p>
-        <button>Добавить</button>
-      </div>
-      <div class="dish">
-        <img src="img/soup3.jpg" alt="Щи">
-        <p class="name">Щи</p>
-        <p class="weight">250 мл</p>
-        <p class="price">180 ₽</p>
-        <button>Добавить</button>
-      </div>
-    </div>
+    <div class="dishes"></div>
   </section>
 
   <!-- Главные блюда -->
-  <section>
+  <section id="mains">
     <h2>Главные блюда</h2>
-    <div class="dishes">
-      <div class="dish">
-        <img src="img/main1.jpg" alt="Котлета с пюре">
-        <p class="name">Котлета с пюре</p>
-        <p class="weight">300 г</p>
-        <p class="price">350 ₽</p>
-        <button>Добавить</button>
-      </div>
-      <div class="dish">
-        <img src="img/main2.jpg" alt="Паста Болоньезе">
-        <p class="name">Паста Болоньезе</p>
-        <p class="weight">350 г</p>
-        <p class="price">400 ₽</p>
-        <button>Добавить</button>
-      </div>
-      <div class="dish">
-        <img src="img/main3.jpg" alt="Рыба с овощами">
-        <p class="name">Рыба с овощами</p>
-        <p class="weight">320 г</p>
-        <p class="price">420 ₽</p>
-        <button>Добавить</button>
-      </div>
-    </div>
+    <div class="dishes"></div>
   </section>
 
   <!-- Напитки -->
-  <section>
+  <section id="drinks">
     <h2>Напитки</h2>
-    <div class="dishes">
-      <div class="dish">
-        <img src="img/drink1.jpg" alt="Компот">
-        <p class="name">Компот</p>
-        <p class="weight">200 мл</p>
-        <p class="price">100 ₽</p>
-        <button>Добавить</button>
-      </div>
-      <div class="dish">
-        <img src="img/drink2.jpg" alt="Чай">
-        <p class="name">Чай</p>
-        <p class="weight">200 мл</p>
-        <p class="price">90 ₽</p>
-        <button>Добавить</button>
-      </div>
-      <div class="dish">
-        <img src="img/drink3.jpg" alt="Сок">
-        <p class="name">Сок</p>
-        <p class="weight">200 мл</p>
-        <p class="price">120 ₽</p>
-        <button>Добавить</button>
-      </div>
-    </div>
-  </section>
-  <section>
-    <h2>Ваш заказ</h2>
-    <div id="order">
-        <p>Ничего не выбрано</p>
-    </div>
+    <div class="dishes"></div>
   </section>
 
+  <!-- Заказ -->
+  <section id="order-block">
+    <h2>Сделать заказ</h2>
+    <form id="order-form" action="https://httpbin.org/post" method="POST" target="_blank">
+      <div class="order-container">
+        <!-- Левая колонка: выбранные блюда -->
+        <div class="order-left" id="order">
+          <p>Ничего не выбрано</p>
+        </div>
+
+        <!-- Правая колонка: данные клиента -->
+        <div class="order-right">
+          <h3>Ваши данные</h3>
+          <label>Имя:<br><input type="text" name="customerName" required></label><br>
+          <label>Email:<br><input type="email" name="email" required></label><br>
+          <label><input type="checkbox" name="subscribe" value="yes"> Получать информацию о скидках и акциях</label><br>
+          <label>Номер телефона:<br><input type="tel" name="phone" required></label><br>
+          <label>Адрес доставки:<br><input type="text" name="address"></label><br>
+          <p><em>Доставка осуществляется только по Москве</em></p>
+          <p>Время доставки:</p>
+          <label><input type="radio" name="deliveryTime" value="soon" checked> Как можно скорее</label><br>
+          <label><input type="radio" name="deliveryTime" value="scheduled"> К указанному времени</label><br>
+          <label>Комментарии к заказу:<br><textarea name="comment"></textarea></label>
+        </div>
+      </div>
+      <button type="submit">Отправить заказ</button>
+    </form>
+  </section>
 </main>
 
 <footer>
@@ -121,5 +77,9 @@
   <a href="mailto:info@businesslunch.ru">info@businesslunch.ru</a></p>
   <p>Адрес: Москва, ул. Примерная, 10</p>
 </footer>
+
+<script src="dishes.js"></script>
+<script src="render.js"></script>
+<script src="order.js"></script>
 </body>
 </html>
