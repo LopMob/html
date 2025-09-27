@@ -88,3 +88,33 @@
   border: 2px solid tomato;
 }
 
+.filters {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background: #f9f9f9;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.filters button:hover {
+  background: tomato;
+  color: white;
+  border-color: tomato;
+}
+
+.filters button.active {
+  background: tomato;
+  color: white;
+  border-color: tomato;
+  font-weight: bold;
+}
+

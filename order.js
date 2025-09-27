@@ -1,14 +1,12 @@
-let order = { soup: null, main: null, drink: null };
+let order = { soup: null, main: null, salad: null, drink: null, dessert: null };
 
 function selectDish(dish) {
   order[dish.category] = dish;
 
-  // снять подстветки со всех карточек этой категории
   document.querySelectorAll(`#${dish.category}s .dish`).forEach(el => {
     el.classList.remove('selected');
   });
 
-  // выделить выбранную карточку
   document.querySelector(`[data-dish="${dish.keyword}"]`).classList.add('selected');
 
   updateOrder();
@@ -21,14 +19,20 @@ function updateOrder() {
   let total = 0;
   let hasDish = false;
 
-  ['soup', 'main', 'drink'].forEach(cat => {
+  ['soup', 'main', 'salad', 'drink', 'dessert'].forEach(cat => {
     const dish = order[cat];
     if (dish) {
       orderDiv.innerHTML += `<p><strong>${dish.name}</strong> ${dish.price} ₽</p>`;
       total += dish.price;
       hasDish = true;
     } else {
-      orderDiv.innerHTML += `<p>${cat === 'soup' ? 'Суп' : cat === 'main' ? 'Главное блюдо' : 'Напиток'}: не выбрано</p>`;
+      let name = '';
+      if (cat === 'soup') name = 'Суп';
+      if (cat === 'main') name = 'Главное блюдо';
+      if (cat === 'salad') name = 'Салат/стартер';
+      if (cat === 'drink') name = 'Напиток';
+      if (cat === 'dessert') name = 'Десерт';
+      orderDiv.innerHTML += `<p>${name}: не выбрано</p>`;
     }
   });
 
@@ -45,7 +49,7 @@ function updateHiddenInputs() {
   const form = document.querySelector('#order-form');
   form.querySelectorAll('input[type=hidden]').forEach(el => el.remove());
 
-  ['soup', 'main', 'drink'].forEach(cat => {
+  ['soup', 'main', 'salad', 'drink', 'dessert'].forEach(cat => {
     const dish = order[cat];
     if (dish) {
       const input = document.createElement('input');
