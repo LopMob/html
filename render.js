@@ -1,53 +1,87 @@
+let filtersWired = false; // чтобы не вешать обработчики повторно
+
 function renderDishes() {
-  const categories = {
-    soup: document.querySelector('#soups .dishes'),
-    main: document.querySelector('#mains .dishes'),
-    salad: document.querySelector('#salads .dishes'),
-    drink: document.querySelector('#drinks .dishes'),
-    dessert: document.querySelector('#desserts .dishes')
+  // соответствие категорий из API вашим секциям
+  const containers = {
+    "soup":        document.querySelector('#soups .dishes'),
+    "main-course": document.querySelector('#mains .dishes'),
+    "salad":       document.querySelector('#salads .dishes'),
+    "drink":       document.querySelector('#drinks .dishes'),
+    "dessert":     document.querySelector('#desserts .dishes')
   };
 
-  dishes.sort((a, b) => a.name.localeCompare(b.name));
+  // очистим перед отрисовкой (на случай повторного рендера)
+  Object.values(containers).forEach(c => c && (c.innerHTML = ""));
 
+  // сортировка по названию — как было
+  dishes.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+
+  // рисуем карточки
   dishes.forEach(dish => {
+    const place = containers[dish.category];
+    if (!place) return; // на всякий случай, если категория неизвестна
+
     const card = document.createElement('div');
-    card.classList.add('dish');
-    card.setAttribute('data-dish', dish.keyword);
-    card.setAttribute('data-kind', dish.kind);
+    card.className = 'dish';
+    card.dataset.dish = dish.keyword; // нужно для order.js
+    card.dataset.kind = dish.kind;    // нужно для фильтров
 
     card.innerHTML = `
       <img src="${dish.image}" alt="${dish.name}">
       <p class="name">${dish.name}</p>
       <p class="weight">${dish.count}</p>
       <p class="price">${dish.price} ₽</p>
-      <button>Добавить</button>
+      <button class="add-btn">Добавить</button>
     `;
 
+    // клик по кнопке — используем твою функцию из order.js
     card.querySelector('button').addEventListener('click', () => {
       selectDish(dish);
     });
 
-    categories[dish.category].appendChild(card);
+    place.appendChild(card);
+    
   });
 
-  document.querySelectorAll('.filters button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const section = btn.closest('section');
-      const kind = btn.dataset.kind;
-      const dishes = section.querySelectorAll('.dish');
+  // подключаем фильтры один раз (делегирование)
+  if (!filtersWired) {
+    document.querySelectorAll('section').forEach(section => {
+      const filters = section.querySelector('.filters');
+      const list    = section.querySelector('.dishes');
+      if (!filters || !list) return;
 
-      if (btn.classList.contains('active')) {
-        btn.classList.remove('active');
-        dishes.forEach(d => d.style.display = '');
-      } else {
-        section.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+      filters.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-kind]');
+        if (!btn) return;
+
+        // переключаем active в пределах секции
+        const active = filters.querySelector('button.active');
+        if (active === btn) {
+          active.classList.remove('active');
+          list.querySelectorAll('.dish').forEach(d => d.style.display = '');
+          return;
+        }
+        filters.querySelectorAll('button').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        dishes.forEach(d => {
-          d.style.display = (d.dataset.kind === kind) ? '' : 'none';
+
+        const kind = btn.dataset.kind;
+        list.querySelectorAll('.dish').forEach(card => {
+          card.style.display = (card.dataset.kind === kind) ? '' : 'none';
         });
-      }
+      });
     });
+
+    filtersWired = true;
+  }
+}
+function restoreSelection() {
+  const selected = JSON.parse(localStorage.getItem('selectedDishes')) || [];
+  document.querySelectorAll('.dish-card').forEach(card => {
+    const id = parseInt(card.dataset.id);
+    if (selected.includes(id)) {
+      card.classList.add('selected');
+      const btn = card.querySelector('.add-btn');
+      if (btn) btn.textContent = 'Удалить';
+    }
   });
 }
-
-document.addEventListener('DOMContentLoaded', renderDishes);

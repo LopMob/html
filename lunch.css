@@ -20,11 +20,6 @@
     border: 2px solid tomato;
 }
 
-.dish:hover button {
-    background-color: tomato;
-    color: white;
-}
-
 .dish img {
     width: 100%;
     border-radius: 35px;
@@ -56,38 +51,17 @@
     transition: 0.3s;
 }
 
-@media (max-width: 800px) {
-  .dishes {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  nav {
-    justify-content: space-between;
-  }
-}
-
-@media (max-width: 600px) {
-  h1 {
-    text-align: center;
-  }
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-  nav a {
-    font-size: 22px;
-  }
-  .dishes {
-    grid-template-columns: 1fr;
-  }
-  section h2 {
-    text-align: center;
-  }
+.dish button.active-btn {
+  background: tomato;
+  color: white;
+  font-weight: bold;
 }
 
 .dish.selected {
   border: 2px solid tomato;
 }
 
+/* фильтры */
 .filters {
   margin-bottom: 20px;
   display: flex;
@@ -108,7 +82,6 @@
 .filters button:hover {
   background: tomato;
   color: white;
-  border-color: tomato;
 }
 
 .filters button.active {
@@ -118,3 +91,176 @@
   font-weight: bold;
 }
 
+/* комбо */
+.combo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.combo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* равномерное распределение */
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background: #fff;
+  min-height: 380px; /* одинаковая высота для всех карточек */
+  position: relative;
+}
+
+
+.combo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100px;      /* фикс ширины для всех блоков */
+  text-align: center;
+}
+
+.combo-item img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  margin-bottom: 6px;
+}
+
+.combo-item img:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.combo-item p {
+  font-size: 14px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.dessert-note {
+  font-size: 14px; /* меньше чем основной */
+  font-style: italic;
+  color: #555;
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* уведомление */
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 300px;
+}
+
+.modal p {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.modal button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #f1eee9;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal button:hover {
+  background: tomato;
+  color: white;
+}
+
+.dessert-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.dessert-info img {
+  width: 120px;
+  transition: 0.3s;
+}
+
+.dessert-info img:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.dessert-info p {
+  font-size: 14px; /* на 2 пункта меньше чем у подписей */
+  color: #555;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* Десерт как комбо */
+.dessert-combo {
+  justify-content: center;
+}
+
+.dessert-combo .combo-item p {
+  font-size: 14px; /* меньше, чем у остальных подписей */
+  font-style: italic;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.add-combo-btn {
+  margin-top: auto;         /* прижимает кнопку вниз */
+  width: 70%;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background: #f1eee9;
+  cursor: pointer;
+}
+
+
+.add-combo-btn:hover {
+  background: tomato;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.add-combo-btn:active {
+  background: #e14a2b;
+  transform: scale(0.97);
+}
+
+.combo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* равномерное распределение */
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background: #fff;
+  min-height: 380px; /* одинаковая высота карточек */
+}
+
+.combo.selected {
+  border: 2px solid #0077cc;
+  box-shadow: 0 0 10px rgba(0, 119, 204, 0.4);
+  transition: 0.2s;
+}
+
+.add-combo-btn.active-btn {
+  background-color: tomato;
+  color: white;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Бизнес-ланчи | FreshLunch</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero {
+      background: url("https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1200") center/cover no-repeat;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .feature-icon {
+      font-size: 40px;
+      color: #0d6efd;
+      margin-bottom: 10px;
+    }
+    .cta {
+      background: #0d6efd;
+      color: white;
+      padding: 50px 0;
+      text-align: center;
+    }
+    .cta a {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<section class="hero text-center">
+  <div class="container">
+    <h1>FreshLunch</h1>
+    <p class="lead">Доставляем вкусные и полезные бизнес-ланчи прямо в офис</p>
+    <a href="lunch.html" class="btn btn-lg btn-light mt-3">Собрать ланч</a>
+  </div>
+</section>
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2>Почему выбирают нас</h2>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon">🥗</div>
+        <h5>Свежие продукты</h5>
+        <p>Мы используем только свежие ингредиенты для приготовления блюд.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon">⚡</div>
+        <h5>Быстрая доставка</h5>
+        <p>Доставим ваш заказ вовремя — в течение часа.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon">💼</div>
+        <h5>Идеально для офиса</h5>
+        <p>Полноценные бизнес-ланчи для сотрудников и руководителей.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cta">
+  <div class="container">
+    <h2>Готовы попробовать?</h2>
+    <p class="lead">Соберите свой идеальный бизнес-ланч прямо сейчас!</p>
+    <a href="lunch.html" class="btn btn-lg btn-light">Собрать ланч</a>
+  </div>
+</section>
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Контакты -->
+      <div class="col-md-5 mb-4">
+        <h3>Контакты</h3>
+        <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
+        <p><strong>Email:</strong> info@freshlunch.ru</p>
+        <p><strong>Адрес:</strong> г. Москва, ул. Вкусная, 12</p>
+      </div>
+      <!-- Форма -->
+      <div class="col-md-7">
+        <h3>Обратная связь</h3>
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Имя</label>
+            <input type="text" class="form-control" id="name" placeholder="Ваше имя">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Ваш email">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Сообщение</label>
+            <textarea class="form-control" id="message" rows="4" placeholder="Ваше сообщение"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="text-center py-3 bg-light">
+  <small>&copy; 2025 FreshLunch. Все права защищены.</small>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

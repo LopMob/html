@@ -17,13 +17,71 @@
   <nav>
     <a href="index.html">Главная</a>
     <a href="menu.html">Меню</a>
-    <a href="lunch.html" class="active">Собрать ланч</a>
+    <a href="lunch.html">Собрать ланч</a>
+    <a href="checkout.html">Оформить заказ</a>
+    <a href="orders.html">Заказы</a>
     <a href="contacts.html">Контакты</a>
-    <a href="auth.html">Войти</a>
   </nav>
 </header>
 
 <main>
+  <!-- Доступные варианты комбо -->
+  <section id="combos">
+  <h2>Готовые комбо-ланчи</h2>
+<div class="combo-grid">
+
+  <div class="combo" data-combo="1">
+    <div class="combo-item"><img src="img/soup.png" alt="Гаспачо"><p>Гаспачо</p></div>
+    <div class="combo-item"><img src="img/main.png" alt="Лазанья"><p>Лазанья</p></div>
+    <div class="combo-item"><img src="img/salad.png" alt="Салат с тунцом"><p>Салат с тунцом</p></div>
+    <div class="combo-item"><img src="img/drink.png" alt="Черный чай"><p>Черный чай</p></div>
+    <button class="add-combo-btn" onclick="selectCombo('Комбо №1', 850, { soup: 1, main_course: 8, salad: 16, drink: 24 })">Добавить комбо</button>
+    <p class="combo-price">850 ₽</p>
+  </div>
+
+  <div class="combo" data-combo="2">
+    <div class="combo-item"><img src="img/soup.png" alt="Грибной суп-пюре"><p>Грибной суп-пюре</p></div>
+    <div class="combo-item"><img src="img/main.png" alt="Пицца Маргарита"><p>Пицца Маргарита</p></div>
+    <div class="combo-item"><img src="img/drink.png" alt="Яблочный сок"><p>Яблочный сок</p></div>
+    <button class="add-combo-btn" onclick="selectCombo('Комбо №2', 720, { soup: 2, main_course: 11, drink: 20 })">Добавить комбо</button>
+    <p class="combo-price">720 ₽</p>
+  </div>
+
+  <div class="combo" data-combo="3">
+    <div class="combo-item"><img src="img/soup.png" alt="Куриный суп"><p>Куриный суп</p></div>
+    <div class="combo-item"><img src="img/salad.png" alt="Корейский салат"><p>Корейский салат с овощами и яйцом</p></div>
+    <div class="combo-item"><img src="img/drink.png" alt="Капучино"><p>Капучино</p></div>
+    <button class="add-combo-btn" onclick="selectCombo('Комбо №3', 700, { soup: 6, salad: 13, drink: 22 })">Добавить комбо</button>
+    <p class="combo-price">700 ₽</p>
+  </div>
+
+  <div class="combo" data-combo="4">
+    <div class="combo-item"><img src="img/main.png" alt="Рыбная котлета с рисом"><p>Рыбная котлета с рисом</p></div>
+    <div class="combo-item"><img src="img/salad.png" alt="Цезарь с цыпленком"><p>Цезарь с цыпленком</p></div>
+    <div class="combo-item"><img src="img/drink.png" alt="Зеленый чай"><p>Зеленый чай</p></div>
+    <button class="add-combo-btn" onclick="selectCombo('Комбо №4', 750, { main_course: 10, salad: 14, drink: 23 })">Добавить комбо</button>
+    <p class="combo-price">750 ₽</p>
+  </div>
+
+  <div class="combo" data-combo="5">
+    <div class="combo-item"><img src="img/main.png" alt="Паста с креветками"><p>Паста с креветками</p></div>
+    <div class="combo-item"><img src="img/drink.png" alt="Компот"><p>Апельсиновый сок</p></div>
+    <button class="add-combo-btn" onclick="selectCombo('Комбо №5', 600, { main_course: 12, drink: 19 })">Добавить комбо</button>
+    <p class="combo-price">600 ₽</p>
+  </div>
+
+  <div class="combo dessert-combo">
+    <div class="combo-item">
+      <img src="img/dessert.png" alt="Десерт">
+      <p>Десерт</p>
+      <p class="dessert-note">(Можно добавить к любому заказу)</p>
+    </div>
+  </div>
+
+</div>
+
+</section>
+
   <!-- Супы -->
   <section id="soups">
     <h2>Супы</h2>
@@ -78,34 +136,11 @@
     <div class="dishes"></div>
   </section>
 
-  <!-- Заказ -->
-  <section id="order-block">
-    <h2>Сделать заказ</h2>
-    <form id="order-form" action="https://httpbin.org/post" method="POST" target="_blank">
-      <div class="order-container">
-        <!-- Левая колонка: выбранные блюда -->
-        <div class="order-left" id="order">
-          <p>Ничего не выбрано</p>
-        </div>
+  <div id="checkout-panel" class="sticky-panel">
+  <p>Общая стоимость: <span id="total-amount">0</span> ₽</p>
+  <a href="checkout.html" id="checkout-link">Перейти к оформлению</a>
+</div>
 
-        <!-- Правая колонка: данные клиента -->
-        <div class="order-right">
-          <h3>Ваши данные</h3>
-          <label>Имя:<br><input type="text" name="customerName" required></label><br>
-          <label>Email:<br><input type="email" name="email" required></label><br>
-          <label><input type="checkbox" name="subscribe" value="yes"> Получать информацию о скидках и акциях</label><br>
-          <label>Номер телефона:<br><input type="tel" name="phone" required></label><br>
-          <label>Адрес доставки:<br><input type="text" name="address"></label><br>
-          <p><em>Доставка осуществляется только по Москве</em></p>
-          <p>Время доставки:</p>
-          <label><input type="radio" name="deliveryTime" value="soon" checked> Как можно скорее</label><br>
-          <label><input type="radio" name="deliveryTime" value="scheduled"> К указанному времени</label><br>
-          <label>Комментарии к заказу:<br><textarea name="comment"></textarea></label>
-        </div>
-      </div>
-      <button type="submit">Отправить заказ</button>
-    </form>
-  </section>
 </main>
 
 <footer>
@@ -113,9 +148,36 @@
   <a href="mailto:info@businesslunch.ru">info@businesslunch.ru</a></p>
   <p>Адрес: Москва, ул. Примерная, 10</p>
 </footer>
-
 <script src="dishes.js"></script>
 <script src="render.js"></script>
 <script src="order.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', loadDishes);
+</script>
+<script>
+  // вот этот блок обновления суммы
+  document.addEventListener('DOMContentLoaded', async () => {
+    const apiKey = 'cccba07b-7e11-461c-b898-d8fc1720b9c7';
+    const res = await fetch(`https://edu.std-900.ist.mospolytech.ru/labs/api/dishes?api_key=${apiKey}`);
+    const dishes = await res.json();
+
+    function updateTotal() {
+      const selected = JSON.parse(localStorage.getItem('selectedDishes')) || [];
+      const total = dishes
+        .filter(d => selected.includes(d.id))
+        .reduce((sum, d) => sum + d.price, 0);
+      document.getElementById('total-amount').textContent = total;
+    }
+
+    document.body.addEventListener('click', e => {
+      if (e.target.classList.contains('add-btn') || e.target.classList.contains('remove-btn')) {
+        setTimeout(updateTotal, 100);
+      }
+    });
+
+    updateTotal();
+  });
+</script>
+
 </body>
 </html>
